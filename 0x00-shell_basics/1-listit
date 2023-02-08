@@ -1,5 +1,2 @@
 #!/bin/bash
-<<<<<<< HEAD
-=======
 echo "$(ls -1)"
->>>>>>> 3c6eb888b8816cef8e029893fff02d7fe2584ae1

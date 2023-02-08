@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(ls -al1)" "$PWD" "cd -" "/boot"
+echo "$(ls -al1 $PWD cd - /boot)"

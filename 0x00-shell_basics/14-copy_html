@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$(cp -n *.html $PWD/.)"
+echo "$(cp -n *.html . ..)"

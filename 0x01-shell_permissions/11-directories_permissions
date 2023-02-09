@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo u+x "$(find pwd -type d)"
+sudo chmod +x "$(find pwd -type d)"

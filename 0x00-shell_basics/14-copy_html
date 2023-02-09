@@ -1,3 +1,2 @@
 #!/bin/bash
 echo "$(cp -u $PWD/*.html ..)"
-echo "$(cp -u $PWD/*.html ..)"

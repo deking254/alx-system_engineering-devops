@@ -1,2 +1,2 @@
 #!/bin/bash
-find /root -type f -name [A-Z]* -exec mv -t /tmp/u {} +
+mv [[:upper:]]* /tmp/u

@@ -1,2 +1,2 @@
 #!/bin/bash
-tee
+awk '!(NR%2){print}'

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+if $(stat school)
+then echo "file present"
+else
+echo "worry"
+fi

@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 # This script is displaying "Best School" 10 times
-if $(stat school)
-then echo "file present"
+fle=school
+if [ -e "$fle" ]
+then echo "school file exists"
+if [ -s "$fle" ]
+then echo "school file is not empty"
 else
-echo "worry"
+echo "school file is empty"
+if [ -f "$fle" ]
+then echo "school is a regular file"
+fi
+fi
+else
+echo "school file does not exist"
 fi

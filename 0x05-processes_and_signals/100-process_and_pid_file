@@ -1,1 +1,23 @@
-d
+#!/usr/bin/env bash
+# process and signals
+touch /var/run/myscript.pid
+killcommand()
+{
+echo "I hate the kill command"
+}
+intsig()
+{
+echo "Y U no love me?!"
+}
+ending()
+{
+rm /var/run/myscript.pid
+exit 0
+}
+while true
+do
+echo "To infinity and beyond"
+trap killcommand TERM
+trap intsig INT
+trap ending QUIT
+done

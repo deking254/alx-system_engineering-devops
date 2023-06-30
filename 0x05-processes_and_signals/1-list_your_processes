@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-echo $j
+# processes and signals - dis[laying processes
+ps aux -H

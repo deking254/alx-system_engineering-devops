@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-# process and signals
 echo $j

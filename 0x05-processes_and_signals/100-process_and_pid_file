@@ -19,5 +19,5 @@ do
 echo "To infinity and beyond"
 trap killcommand TERM
 trap intsig INT
-trap ending QUIT
+trap ending QUIT || TERM
 done

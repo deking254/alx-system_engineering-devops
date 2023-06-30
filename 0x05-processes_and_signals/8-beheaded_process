@@ -1,1 +1,4 @@
-d
+#!/usr/bin/env bash
+# process and signals
+i=$(pgrep -f "bash ./7-highlander")
+kill -9 "$i"

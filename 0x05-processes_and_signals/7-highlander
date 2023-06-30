@@ -1,1 +1,12 @@
-d
+#!/usr/bin/env bash
+# process and signals
+cleanup()
+{
+echo "I am invincible!!!"
+}
+while true
+do
+echo "To infinity and beyond"
+sleep 2
+trap cleanup TERM
+done

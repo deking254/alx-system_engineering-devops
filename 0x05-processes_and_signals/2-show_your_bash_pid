@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # process and signals
 # shellcheck disable=SC2009
-ps u -C bash
+ps --no-headers -f -C bash

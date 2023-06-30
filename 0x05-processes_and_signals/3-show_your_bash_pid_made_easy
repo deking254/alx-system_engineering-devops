@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# process and signals
+pgrep -l bash

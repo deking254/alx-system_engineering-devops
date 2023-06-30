@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# process and signals
+i=$(pgrep bash)
+kill -9 $i

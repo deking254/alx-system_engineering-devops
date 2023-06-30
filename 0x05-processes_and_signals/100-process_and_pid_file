@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # process and signals
 touch /var/run/myscript.pid
+echo $$ > /var/run/myscript.pid
 killcommand()
 {
 echo "I hate the kill command"

@@ -9,16 +9,15 @@ echo "manage_my_process started"
 }
 sto ()
 {
-
 i=$(sudo cat /var/run/my_process.pid)
-kill -19 "$i"
+kill -9 "$i"
 sudo rm /var/run/my_process.pid
 echo "manage_my_process stopped"
 }
 restar()
 {
 k=$(sudo cat /var/run/my_process.pid)
-kill -19 "$k"
+kill -9 "$k"
 sudo rm /var/run/my_process.pid
 ./manage_my_process &
 echo "$!"|sudo tee /var/run/my_process.pid > /dev/null

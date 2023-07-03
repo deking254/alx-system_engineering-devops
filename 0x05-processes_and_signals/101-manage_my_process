@@ -1,1 +1,40 @@
-d
+#!/usr/bin/env bash
+# process and signals
+sta="$1"
+star ()
+{
+./manage_my_process &
+echo "$!"|sudo tee /var/run/my_process.pid > /dev/null
+echo "manage_my_process started"
+}
+sto ()
+{
+
+i=$(sudo cat /var/run/my_process.pid)
+kill -19 "$i"
+sudo rm /var/run/my_process.pid
+echo "manage_my_process stopped"
+}
+restar()
+{
+k=$(sudo cat /var/run/my_process.pid)
+kill -19 "$k"
+sudo rm /var/run/my_process.pid
+./manage_my_process &
+echo "$!"|sudo tee /var/run/my_process.pid > /dev/null
+echo "manage_my_process restarted"
+}
+case $sta in
+"start")
+star
+;;
+"stop")
+sto
+;;
+"restart")
+restar
+;;
+*)
+echo "Usage: manage_my_process {start|stop|restart}"
+esac
+

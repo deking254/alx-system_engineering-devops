@@ -1,1 +1,3 @@
-d
+#!/usr/bin/env bash
+#listening for connections
+sudo nc -l localhost 98

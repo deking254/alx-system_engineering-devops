@@ -1,0 +1,27 @@
+What is a SERVER?
+A server is a software or physical device that hosts information requested by a client-side software eg web browser
+
+Role of the Domain name?
+It is used a readable identifier of a website in a network
+
+What type of DNS record www is in www.foobar.com?
+It means that the resource is in a public network
+
+What is the role of the web server
+It deals with managing the static resources on a computer network
+
+What is the role of the application server
+It manages dynamic information that needs to be generated or accessed from a database
+
+What is the role of the database
+It stores data in structured manner to make it accessible
+
+What is the server using to communicate with the computer of the user requesting the website
+TCP/IP which is a protocol that defines how data is transferred
+
+ISSUES OF THE ONE SERVER INFRASTRUCTURE
+1. Making changes to server-side can be tedious since the server needs to be restarted for the changes to be effected
+2. SPOF
+	(i) OS failure- if the OS used to run the server fails then the whole infrastructure crumbles.
+	(ii) Networking issues - if there are issues with the connectivity then the comminuication is rendered useless
+

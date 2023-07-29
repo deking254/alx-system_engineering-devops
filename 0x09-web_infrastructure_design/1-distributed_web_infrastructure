@@ -1,0 +1,15 @@
+LOAD BALANCER
+This component is a software that manages requests to a server. It determines the capacity of a server to handle new requests and sends the request to the suitable server.
+This prevents one server from being overloaded by requests.
+
+ADDITIONAL SERVER
+This deals with the challenges of the one server infrastructure by ensuring that the chances of website being unreachable because of server issues are averted. This is because it reduces the reliance of a single server for a website.
+
+SPOF
+The load-balancer poses a risk to this infrastructure. If the load-balancer is compromised then one server might be overloaded with requests.
+
+NO FIREWALL
+This poses a security issue to the server where malicious software can be sent to the server to do undesired operations
+
+NO MONITORING
+This will cause the two servers not to be in sync at any given point causing inconsistencies in the information provided on the website.

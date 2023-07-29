@@ -1,0 +1,16 @@
+The new components include the firewalls, the SSL Certificate and the additional monitors
+A firewall is a software that sieves all data for suspicious content before they enter a given system.
+In our case the firewalls are placed before the loadbalancer and the two servers.
+
+The ssl certificate ensures that a website is approved as being secure and not containing any malicious content. This certificate will be obtained over the internet. Once it is obtained and ascertained to be legit then the data proceeds on through to the load balancer
+
+The additional monitors have specialised roles to improve performance of the syncing of the two servers. The file monitor checks that the file structure of the two servers are in sync while the db server checks that the databases(primary and secondary are both in tune)
+The other monitor ensure that both servers are in sync.
+
+ISSUES
+Terminating SSL at the load balancer
+	if the loadbalancer is compromised then it wont be able to detect malicious content
+one MySQL server capable of accepting writes
+	This limits the amount of requests to write to the database
+servers with all the same components
+	scaling becomes very expensive since more monitors have to installed

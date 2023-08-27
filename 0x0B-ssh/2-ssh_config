@@ -1,1 +1,3 @@
-d
+#my personal configuration file for ssh
+PasswordAuthentication no
+IdentityFile ~/.ssh/school

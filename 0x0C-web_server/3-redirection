@@ -1,1 +1,4 @@
-d
+#!/usr/bin/env bash
+#configures the ngix to redirect for /redirect_me
+sudo sed -i 's/location \/ /location \/redirect_me/' /etc/nginx/sites-enabled/default
+sudo sed -i 's/try_files \$uri \$uri\/ \=404/return 301 https:\/\/youtube.com/' /etc/nginx/sites-enabled/default

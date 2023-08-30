@@ -3,4 +3,5 @@
 sudo apt-get -y install nginx-core
 echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 ./3-redirection
+sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './1-install_nginx_web_server'
 sudo service nginx restart

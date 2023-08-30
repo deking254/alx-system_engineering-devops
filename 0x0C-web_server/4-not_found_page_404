@@ -17,4 +17,5 @@ new_location="server {\n\t
         }\n
 }"
 sudo echo -e $new_location | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
+sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './4-not_found_page_404'
 sudo nginx -s reload

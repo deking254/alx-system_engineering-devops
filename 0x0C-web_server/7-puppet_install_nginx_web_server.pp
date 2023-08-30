@@ -1,3 +1,4 @@
+#configure ngix server
 package {'nginx':
 ensure => installed
 }

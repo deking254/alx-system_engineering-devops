@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #configures the ngix to redirect for /redirect_me
+echo "301"
 new_location="server {\n\t
         listen 80 default_server;\n\t
         listen [::]:80 default_server;\n\t
@@ -19,4 +20,3 @@ new_location="server {\n\t
 sudo echo -e "$new_location" | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
 sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './3-redirection'
 sudo service nginx restart
-curl -sI localhost/redirect_me

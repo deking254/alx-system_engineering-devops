@@ -2,8 +2,7 @@
 #configures the ngix to redirect for /redirect_me
 echo "301"
 new_location="server {\n\t
-        listen 80 default_server;\n\t
-        listen [::]:80 default_server;\n\t
+        listen 80;\n\t
         root /var/www/html;\n\t
         index index.html index.htm index.nginx-debian.html;\n\t
         server_name _;\n\t

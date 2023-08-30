@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 #install nginx on the server
-sudo apt-get -y install nginx-core
-echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
-./3-redirection
+sudo apt install -y nginx
+new_location="server {\n\t
+        listen 80 default_server;\n\t
+        listen [::]:80 default_server;\n\t
+        root /var/www/html;\n\t
+        index index.html index.htm index.nginx-debian.html;\n\t
+        server_name _;\n\t
+
+        location / {\n\t
+                # First attempt to serve request as file, then\n\t\t
+                # as directory, then fall back to displaying a 404.\n\t\t
+                echo "Hello World!";
+        }\n
+}"
+sudo echo -e "$new_location" | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
 sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './1-install_nginx_web_server'
 sudo service nginx restart

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #change the 404 file
-mess="Ceci n'est pas une page\n"
+mess="Ceci n'est pas une page"
 echo -e $mess | sudo tee /var/www/html/404.html
 
 new_location="server {\n\t

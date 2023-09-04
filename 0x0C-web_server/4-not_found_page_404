@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 #change the 404 file
-echo -e "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+apt-get update
+apt-get install -y nginx
+service nginx start
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 new_location="server {\n\t
         listen 80 default_server;\n\t
         listen [::]:80 default_server;\n\t
         root /var/www/html;\n\t
-	error_page 404 /404.html;
+	error_page 404 /404.html;\n\t
         index index.html index.htm index.nginx-debian.html;\n\t
         server_name _;\n\t
     	location = /404.html{

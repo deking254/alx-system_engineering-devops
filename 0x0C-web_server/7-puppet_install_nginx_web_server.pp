@@ -3,12 +3,12 @@ package {'nginx':
 ensure => installed
 }
 file {'/var/www/html/404.html':
-ensure  => present;
-content => "Ceci n'est pas une page"
+ensure  => present,
+content => "Ceci n'est pas une page",
 }
 file {'/var/www/html/index.html':
-ensure  => present;
-content => "Hello World!"
+ensure  => present,
+content => "Hello World!",
 }
 file {'/etc/nginx/sites-enabled/default':
 content => "server {
@@ -21,8 +21,4 @@ content => "server {
 		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
 }
 }"
-}
-exec {'nginx restart':
-command => 'sudo service nginx restart',
-path    => '/usr/bin',
 }

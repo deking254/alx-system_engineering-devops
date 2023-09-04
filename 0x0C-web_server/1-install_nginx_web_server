@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #install nginx on the server
-sudo apt install -y nginx
+sudo apt install -y nginx >  /dev/null 2>&1
+echo 'Hello World!'
 new_location="server {\n\t
         listen 80 default_server;\n\t
         listen [::]:80 default_server;\n\t

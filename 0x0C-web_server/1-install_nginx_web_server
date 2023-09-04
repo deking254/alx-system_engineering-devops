@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #install nginx on the server
-#sudo apt install -y nginx >  /dev/null 2>&1
+sudo apt install -y nginx >  /dev/null 2>&1
 #echo 'Hello World!'
-apt-get update
-apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.html
-service nginx start
+#apt-get update
+#apt-get install -y nginx
+#echo "Hello World!" > /var/www/html/index.html
+#service nginx start
 new_location="server {\n\t
         listen 80 default_server;\n\t
         listen [::]:80 default_server;\n\t
@@ -19,7 +19,7 @@ new_location="server {\n\t
                 return 200 'Hello World!\n';
         }\n
 }"
-#sudo echo -e "$new_location" | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
-#sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './1-install_nginx_web_server'
+echo -e "$new_location" | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
+sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './1-install_nginx_web_server'
 #sudo sed -i 's/80 default_server;/80 default_server;\n        location \/ {\n            return 200 "Hello World!";\n        }/' /etc/nginx/sites-available/default
-sudo service nginx restart
+sudo service nginx start

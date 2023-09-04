@@ -1,21 +1,18 @@
 #!/usr/bin/env bash
 #change the 404 file
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
 new_location="server {\n\t
         listen 80 default_server;\n\t
         listen [::]:80 default_server;\n\t
         root /var/www/html;\n\t
+	error_page 404 /404.html;
         index index.html index.htm index.nginx-debian.html;\n\t
         server_name _;\n\t
-
-        location / {\n\t
-                # First attempt to serve request as file, then\n\t\t
-                # as directory, then fall back to displaying a 404.\n\t\t
-                return 404 'Ceci n\'est pas une page\n\n';
-        }\n\t
         location /redirect_me {\n\t\t
                 return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t
         }\n
 }"
 sudo echo -e $new_location | sudo tee /etc/nginx/sites-enabled/default > /dev/null 2>&1
-sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './4-not_found_page_404'
+#sudo ssh -i ~/.ssh/school ubuntu@100.27.10.6 './4-not_found_page_404'
 sudo nginx -s reload

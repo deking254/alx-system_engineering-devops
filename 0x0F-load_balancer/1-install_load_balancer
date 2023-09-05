@@ -1,1 +1,50 @@
-d
+#!/usr/bin/env bash
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.8
+sudo apt-get install haproxy=2.8.\*
+conf="global\n\t
+        log /dev/log    local0\n\t
+        log /dev/log    local1 notice\n\t
+        chroot /var/lib/haproxy\n\t
+        stats socket /run/haproxy/admin.sock mode 660 level admin\n\t
+        stats timeout 30s\n\t
+        user haproxy\n\t
+        group haproxy\n\t
+        daemon\n\n\t
+
+        # Default SSL material locations\n\t
+        ca-base /etc/ssl/certs\n\t
+        crt-base /etc/ssl/private\n\n\t
+
+        # See: https://ssl-config.mozilla.org/#server=haproxy&server-version=2.0.3&config=intermediate\n\t
+        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384\n\t
+        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256\n\t
+        ssl-default-bind-options ssl-min-ver TLSv1.2 no-tls-tickets\n\n
+
+defaults\n\t
+        log     global\n\t
+        mode    http\n\t
+        option  httplog\n\t
+        option  dontlognull\n\t
+        timeout connect 5000\n\t
+        timeout client  50000\n\t
+        timeout server  50000\n\t
+        errorfile 400 /etc/haproxy/errors/400.http\n\t
+        errorfile 403 /etc/haproxy/errors/403.http\n\t
+        errorfile 408 /etc/haproxy/errors/408.http\n\t
+        errorfile 500 /etc/haproxy/errors/500.http\n\t
+        errorfile 502 /etc/haproxy/errors/502.http\n\t
+        errorfile 503 /etc/haproxy/errors/503.http\n\t
+        errorfile 504 /etc/haproxy/errors/504.http\n\n
+
+frontend my_frontend\n\t
+    bind *:80\n\t
+    default_backend my_backend\n\n
+
+backend my_backend\n\t
+    balance roundrobin\n\t
+    server 264927-web-01 100.27.10.6:80 check\n\t
+    server 264927-web-02 54.236.25.48:80 check
+"
+sudo echo -e $conf | sudo tee /etc/haproxy/haproxy.cfg
+sudo service haproxy restart

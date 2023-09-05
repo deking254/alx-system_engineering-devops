@@ -48,4 +48,4 @@ backend my_backend\n\t
     server 264927-web-02 54.236.25.48:80 check
 "
 sudo echo -e "$conf" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
-sudo service haproxy restart
+sudo service haproxy start

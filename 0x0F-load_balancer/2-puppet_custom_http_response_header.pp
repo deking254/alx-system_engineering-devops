@@ -1,1 +1,4 @@
-#!/usr/bin/env bash
+package {"haproxy":
+ensure  => installed,
+}
+file

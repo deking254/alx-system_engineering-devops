@@ -44,8 +44,8 @@ frontend my_frontend\n\t
 
 backend my_backend\n\t
     balance roundrobin\n\t
-    server 264927-web-01 100.27.10.6:80 check\n\t
-    server 264927-web-02 54.236.25.48:80 check
+    server web-01 100.27.10.6:80 check\n\t
+    server web-02 54.236.25.48:80 check
 "
 sudo echo -e "$conf" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy

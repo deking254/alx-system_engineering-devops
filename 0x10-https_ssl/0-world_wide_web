@@ -1,3 +1,55 @@
 #!/usr/bin/env bash
 #Configure your domain zone
-echo $1
+w="www"
+l="lb-01"
+one="web-01"
+two="web-02"
+u=$1
+if [[ "$2" == "$w" ]]
+then
+dig "www.$u" | awk '/^www/ {
+split($0, info, " ")
+printf("The subdomain www is a %s record and points to %s\n", info[4], info[5])
+}'
+else
+if [[ "$2" == "$l" ]]
+then
+dig "lb-01.$u" | awk '/^lb-01/ {
+split($0, info, " ")
+printf("The subdomain lb-01 is a %s record and points to %s\n", info[4], info[5])
+}'
+else
+if [[ "$2" == "$one" ]]
+then
+dig "web-01.$u" | awk '/^web-01/ {
+split($0, info, " ")
+printf("The subdomain web-01 is a %s record and points to %s\n", info[4], info[5])
+}'
+else
+if [[ "$2" == "$two" ]]
+then
+dig "web-02.$u" | awk '/^web-02/ {
+split($0, info, " ")
+printf("The subdomain web-02 is a %s record and points to %s\n", info[4], info[5])
+}'
+else
+dig "$w.$u" | awk '/^www/ {
+split($0, info, " ")
+printf("The subdomain www is a %s record and points to %s\n", info[4], info[5])
+}'
+dig "$l.$u" | awk '/^lb-01/ {
+split($0, info, " ")
+printf("The subdomain lb-01 is a %s record and points to %s\n", info[4], info[5])
+}'
+dig "$one.$u" | awk '/^web-01/ {
+split($0, info, " ")
+printf("The subdomain web-01 is a %s record and points to %s\n", info[4], info[5])
+}'
+dig "$two.$u" | awk '/^web-02/ {
+split($0, info, " ")
+printf("The subdomain web-02 is a %s record and points to %s\n", info[4], info[5])
+}'
+fi
+fi
+fi
+fi

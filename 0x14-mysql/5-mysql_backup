@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-#this program is built to
+#this program is built to backup database
+sudo mysqldump -p"$1" tyrell_corp | sudo tee backup.sql
+b=$(sudo date +%d-%m-%Y.tar.gz)
+sudo tar -cvf "$b" backup.sql

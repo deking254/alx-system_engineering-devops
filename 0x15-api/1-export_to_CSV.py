@@ -1,21 +1,26 @@
 #!/usr/bin/python3
+"""this is an api call program"""
+import csv
 import requests
 import sys
-import csv
-print(dir(csv))
-"""this is an api call program"""
+
 if __name__ == "__main__":
     i = sys.argv[1]
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(i)
     url = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(i)
-    c = 0
     tasks = requests.get(url).json()
-    user = requests.get(user_url).json().get("name")
+    username = requests.get(user_url).json().get("username")
     t = len(tasks)
+    list_outer = []
+    list_inner = []
     for task in tasks:
-        if task.get("completed"):
-            c = c + 1
-    print("Employee {} is done with tasks({}/{}):".format(user, c, t))
-    for task in tasks:
-        if task.get("completed"):
-            print("\t " + task.get("title"))
+        list_inner.append(i)
+        list_inner.append(username)
+        list_inner.append(task.get("completed"))
+        list_inner.append(task.get("title"))
+        list_outer.append(list_inner)
+        list_inner = []
+    with open(i + ".csv", mode='w', newline='') as file:
+        wr = csv.writer(file, "unix")
+        for row in list_outer:
+            wr.writerow(row)

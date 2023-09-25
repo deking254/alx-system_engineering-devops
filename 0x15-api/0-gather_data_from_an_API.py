@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""this is an api call program"""
 import requests
 import sys
-"""this is an api call program"""
 if __name__ == "__main__":
     i = sys.argv[1]
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(i)

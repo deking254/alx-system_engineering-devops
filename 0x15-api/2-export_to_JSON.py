@@ -12,12 +12,11 @@ if __name__ == "__main__":
     tasks = requests.get(url).json()
     username = requests.get(user_url).json().get("username")
     user_dict = {i: []}
-    user_arr = {"task": '', "completed": None, "username": ''}
     for task in tasks:
         t = task.get('title')
         c = task.get('completed')
-        user_arr.update({"task": t, "completed": c, "username": username})
-        user_dict.get(i).append(user_arr)
+        new = {"task": t, "completed": c, "username": username}
+        user_dict.get(i).append(new)
     j = json.dumps(user_dict)
     with open(i + ".json", mode='w') as fil:
         fil.write(j)

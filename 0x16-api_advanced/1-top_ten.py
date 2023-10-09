@@ -18,7 +18,6 @@ def top_ten(subreddit):
                  + DURATION + "&scope=" + SCOPE_STRING)
     data = requests.get("https://api.reddit.com/r/"
                         + subreddit + "/hot?limit=9").json()
-    print(data)
     try:
         i = 0
         for title in data["data"]["children"]:
@@ -27,4 +26,4 @@ def top_ten(subreddit):
             if i == 9:
                 break
     except Exception as e:
-        return None
+        print(None)

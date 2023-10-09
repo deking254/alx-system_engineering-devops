@@ -21,4 +21,9 @@ def number_of_subscribers(subreddit):
         data = urllib.urlopen("https://api.reddit.com/r/"
                               + subreddit + "/about")
         tr = json.loads(data.read())
-        return tr["data"]["subscribers"]
+        if tr["data"]["subscribers"]:
+            return tr["data"]["subscribers"]
+        else:
+            return 0
+    else:
+        return 0

@@ -5,10 +5,22 @@ import requests
 
 def top_ten(subreddit):
     """prints the titiles of the first 10 posts"""
-    data = requests.get("https://www.reddit.com/r/"
-                        + subreddit + "/hot.json?limit=10").json()
+    CLIENT_ID = "u13OXnhDSKr0SR42N1-L5WqVKJ3KuQ"
+    TYPE = "code"
+    RANDOM_STRING = "were"
+    SCOPE_STRING = "[wikiread]"
+    URI = "http://127.0.0.1:65010/authorize_callback"
+    DURATION = "permanent"
+    requests.get("https://www.reddit.com/api/v1/authorize?client_id="
+                 + CLIENT_ID
+                 + "&response_type=" + TYPE + "&state=" +
+                 RANDOM_STRING + "&redirect_uri=" + URI + "&duration="
+                 + DURATION + "&scope=" + SCOPE_STRING)
+    data = requests.get("https://api.reddit.com/r/"
+                        + subreddit + "/hot?limit=9").json()
+    print(data)
     try:
-        for title in data["children"]:
+        for title in data["data"]["children"]:
             print(title["data"]["title"])
     except Exception as e:
         return None

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """the subscribers of the subreddit"""
-import urllib.request as urllib
 import json
+import requests
 
 
 def number_of_subscribers(subreddit):
@@ -12,17 +12,17 @@ def number_of_subscribers(subreddit):
     SCOPE_STRING = "[wikiread]"
     URI = "http://127.0.0.1:65010/authorize_callback"
     DURATION = "permanent"
-    urllib.urlopen("https://www.reddit.com/api/v1/authorize?client_id="
-                   + CLIENT_ID
-                   + "&response_type=" + TYPE + "&state=" +
-                   RANDOM_STRING + "&redirect_uri=" + URI + "&duration="
-                   + DURATION + "&scope=" + SCOPE_STRING)
+    requests.get("https://www.reddit.com/api/v1/authorize?client_id="
+                 + CLIENT_ID
+                 + "&response_type=" + TYPE + "&state=" +
+                 RANDOM_STRING + "&redirect_uri=" + URI + "&duration="
+                 + DURATION + "&scope=" + SCOPE_STRING)
     if subreddit:
-        data = urllib.urlopen("https://api.reddit.com/r/"
-                              + subreddit + "/about")
-        tr = json.loads(data.read())
-        if tr["data"]["subscribers"]:
-            return tr["data"]["subscribers"]
+        data = requests.get("https://api.reddit.com/r/"
+                            + subreddit + "/about")
+        tr = data.json().get("data")
+        if tr:
+            return tr["subscribers"]
         else:
             return 0
     else:

@@ -3,7 +3,7 @@
 import requests
 
 
-def top_ten(subreddit):
+def recurse(subreddit, hot_list=[]):
     """prints the titiles of the first 10 posts"""
     CLIENT_ID = "u13OXnhDSKr0SR42N1-L5WqVKJ3KuQ"
     TYPE = "code"

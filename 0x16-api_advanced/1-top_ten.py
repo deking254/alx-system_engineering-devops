@@ -20,7 +20,11 @@ def top_ten(subreddit):
                         + subreddit + "/hot?limit=9").json()
     print(data)
     try:
+        i = 0
         for title in data["data"]["children"]:
             print(title["data"]["title"])
+            i = i + 1
+            if i == 9:
+                break
     except Exception as e:
         return None

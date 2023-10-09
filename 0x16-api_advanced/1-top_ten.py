@@ -17,7 +17,7 @@ def top_ten(subreddit):
                  RANDOM_STRING + "&redirect_uri=" + URI + "&duration="
                  + DURATION + "&scope=" + SCOPE_STRING)
     data = requests.get("https://api.reddit.com/r/"
-                        + subreddit + "/hot?limit=9").json()
+                        + subreddit + "/hot?limit=10").json()
     try:
         i = 0
         for title in data["data"]["children"]:

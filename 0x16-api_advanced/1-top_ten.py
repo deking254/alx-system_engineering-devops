@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""this file handles the titles that are hot"""
 import requests
 
 

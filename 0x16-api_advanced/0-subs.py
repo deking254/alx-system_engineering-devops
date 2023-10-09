@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """the subscribers of the subreddit"""
-import json
 import requests
 
 
@@ -20,7 +19,10 @@ def number_of_subscribers(subreddit):
     if subreddit:
         data = requests.get("https://api.reddit.com/r/"
                             + subreddit + "/about")
-        tr = data.json().get("data")
+        try:
+            tr = data.json().get("data")
+        except Exception as e:
+            return 0
         if tr:
             return tr["subscribers"]
         else:
